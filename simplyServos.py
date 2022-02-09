@@ -59,7 +59,7 @@ class KitronikSimplyServos:
     #Class initialisation
     #defaults to the standard pins and freq for the kitronik board, but could be overridden
     def __init__(self):
-        servoPins = [2,3,4,5,13,12,11,10]
+        servoPins = [2,3,4,5,6,7,8,9]
         self.servos = []
         #self._initServos()
         #connect the servos by default on construction - advanced uses can disconnect them if required.
