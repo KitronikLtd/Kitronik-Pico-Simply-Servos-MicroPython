@@ -37,7 +37,7 @@ class KitronikSimplyServos:
         if(self.servos[servo].active()):
             self.servos[servo].active(0)
  
-    # goToPosition takes a degree position for the serov to goto. 
+    # goToPosition takes a degree position for the servo to goto. 
     # 0degrees->180 degrees is 0->2000us, plus offset of 500uS
     #1 degree ~ 11uS.
     #This function does the sum then calls goToPeriod to actually poke the PIO 
