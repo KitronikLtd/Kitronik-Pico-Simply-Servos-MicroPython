@@ -9,7 +9,7 @@ class KitronikSimplyServos:
     #pulse train freq 50hz - 20mS
     #1uS is freq of 1000000
     #servo pulses range from 500 to 2500usec and overall pulse train is 20000usec repeat.
-    #servo pins on the Simply Servos board are: GP2, GP3, GP4, GP5, GP13, GP12, GP11, GP10 for servos 1-8 in order
+    #servo pins on the Simply Servos board are: GP2, GP3, GP4, GP5, GP6, GP7, GP8, GP9 for servos 1-8 in order
     maxServoPulse = 2500
     minServoPulse = 500
     pulseTrain = 20000
