@@ -58,12 +58,13 @@ class KitronikSimplyServos:
 
     #Class initialisation
     #defaults to the standard pins and freq for the kitronik board, but could be overridden
-    def __init__(self):
+    def __init__(self, numberOfServos = 8):
         servoPins = [2,3,4,5,6,7,8,9]
         self.servos = []
+        self.numberofServos = numberofServosToCreate
         #self._initServos()
         #connect the servos by default on construction - advanced uses can disconnect them if required.
-        for i in range(8):
+        for i in range(numberOfServos):
             self.servos.append (StateMachine(i, self._servo_pwm, freq=2000000, sideset_base=Pin(servoPins[i])))
             self.servos[i].put(self.pulseTrain)
             self.servos[i].exec("pull()")
