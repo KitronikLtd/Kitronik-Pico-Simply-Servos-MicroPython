@@ -67,6 +67,7 @@ class KitronikSimplyServos:
             self.servos[i].put(self.pulseTrain)
             self.servos[i].exec("pull()")
             self.servos[i].exec("mov(isr, osr)")
+            # Pre set X to be half of a full pulse (90 degrees)
+            self.servos[i].put(1500) # Change this between 500 to 2500 for 0 to 180 degrees initial position
             self.registerServo(i)
-            self.goToPosition(i,90) #set the servo outputs to middle of the range.
       
