@@ -43,5 +43,5 @@ class KitronikSimplyServos:
         self.servos = [None for _ in range(numberOfServos)]
         #connect the servos by default on construction - advanced uses can disconnect them if required.
         for i in range(numberOfServos):
-            self.registerServo(i, servoPins[i])
+            self.registerServo(i)
       
