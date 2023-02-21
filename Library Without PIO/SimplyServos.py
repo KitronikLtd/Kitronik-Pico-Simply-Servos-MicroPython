@@ -6,7 +6,7 @@ from machine import Pin, PWM
 class KitronikSimplyServos:
     #simply stops and starts the servo PIO, so the pin could be used for soemthing else.
     def registerServo(self, servo):
-        self.servos[servo] = PWM(Pin(self.servoPins[servo))
+        self.servos[servo] = PWM(Pin(self.servoPins[servo]))
         self.servos[servo].freq(50)
         self.goToPosition(servo, 90)
 
