@@ -68,15 +68,15 @@ class KitronikSimplyServos:
         #connect the servos by default on construction - advanced uses can disconnect them if required.
         for i in range(numberOfServos):
             for j in range(8): # StateMachine range from 0 to 7
-                if usedSM[i]:
+                if usedSM[j]:
                     continue # Ignore this index if already used
                 try:
                     self.servos.append(StateMachine(j, self._servo_pwm, freq=2000000, sideset_base=Pin(servoPins[i])))
-                    usedSM[i] = True # Set this index to used
+                    usedSM[j] = True # Set this index to used
                     break # Have claimed the SM, can leave now
                 except ValueError:
                     pass # External resouce has SM, move on
-                if i == 7:
+                if j == 7:
                     # Cannot find an unused SM
                     raise ValueError("Could not claim a StateMachine, all in use")
                 
