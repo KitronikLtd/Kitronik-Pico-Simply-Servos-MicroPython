@@ -52,8 +52,8 @@ class KitronikSimplyServos:
     def goToPeriod(self,servo, period):
         if(period < 500):
             period = 500
-        if(period > 2500):
-            period = 2500
+        if(period >2500):
+            period =2500
         #check if servo SM is active, otherwise we are trying to control a thing we do not have control over
         if self.servos[servo].active():
             self.servos[servo].put(period)
@@ -68,15 +68,15 @@ class KitronikSimplyServos:
         #connect the servos by default on construction - advanced uses can disconnect them if required.
         for i in range(numberOfServos):
             for j in range(8): # StateMachine range from 0 to 7
-                if usedSM[j]:
+                if usedSM[i]:
                     continue # Ignore this index if already used
                 try:
                     self.servos.append(StateMachine(j, self._servo_pwm, freq=2000000, sideset_base=Pin(servoPins[i])))
-                    usedSM[j] = True # Set this index to used
+                    usedSM[i] = True # Set this index to used
                     break # Have claimed the SM, can leave now
                 except ValueError:
                     pass # External resouce has SM, move on
-                if j == 7:
+                if i == 7:
                     # Cannot find an unused SM
                     raise ValueError("Could not claim a StateMachine, all in use")
                 

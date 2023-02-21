@@ -1,6 +1,6 @@
 #example usage of the Simply Servos class - sets all servos to 0 then 180
 
-from simplyServos import KitronikSimplyServos
+from SimplyServos import KitronikSimplyServos
 from time import sleep
 
 servos = KitronikSimplyServos()
