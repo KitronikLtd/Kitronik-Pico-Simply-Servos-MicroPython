@@ -22,5 +22,9 @@ where:
 * period => 500 - 2500 
 	period is the pulse width in microseconds
 
-
 This code is designed to be used as a module. See: https://kitronik.co.uk/blogs/resources/modules-micro-python-and-the-raspberry-pi-pico for more information.
+
+## Troubleshooting
+Exception rasied as - **ValueError: StateMachine claimed by external resource**
+- Likely caused by using the wireless chip on the Pico W, as well as using all eight servos.
+- Can be solved by using the Simply Servos library from the folder `Library Without PIO`.
