@@ -17,6 +17,7 @@ class KitronikSimplyServos:
     minServoPulse = 500
     pulseTrain = 20000
     degreesToUS = 2000/180
+    piEstimate = 3.1416
     
     #this code drives a pwm on the PIO. It is running at 2Mhz, which gives the PWM a 1uS resolution. 
     @asm_pio(sideset_init=PIO.OUT_LOW)
@@ -45,15 +46,21 @@ class KitronikSimplyServos:
     # 0degrees->180 degrees is 0->2000us, plus offset of 500uS
     #1 degree ~ 11uS.
     #This function does the sum then calls goToPeriod to actually poke the PIO 
-    def goToPosition(self,servo, degrees):
-        pulseLength = int(degrees*self.degreesToUS + 500)
-        self.goToPeriod(servo,pulseLength)
+    def goToPosition(self, servo, degrees):
+        pulseLength = int(degrees * self.degreesToUS + 500)
+        self.goToPeriod(servo, pulseLength)
     
-    def goToPeriod(self,servo, period):
+    # Takes the servo to change and the angle in radians to move to.
+    # 0 radians to 3.1416
+    def goToRadians(self, servo, radians):
+        period = int((radians / self.piEstimate) * 2000) + 500
+        self.goToPeriod(servo, period)
+    
+    def goToPeriod(self, servo, period):
         if(period < 500):
             period = 500
-        if(period >2500):
-            period =2500
+        if(period > 2500):
+            period = 2500
         #check if servo SM is active, otherwise we are trying to control a thing we do not have control over
         if self.servos[servo].active():
             self.servos[servo].put(period)

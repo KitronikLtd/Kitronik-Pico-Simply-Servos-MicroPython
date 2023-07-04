@@ -13,13 +13,19 @@ This will initialise the PIO and set them to drive the servo pins.
     board.goToPosition(servo, degrees)
 where:
 * servo => 1 to 8
-* degrees => 0-180
+* degrees => 0 to 180
+
+## Drive a Servo by radians:
+    board.goToRadians(servo, radians)
+where:
+* servo => 1 to 8
+* radians => 0 to 3.1416 (Pi to four digits)
 
 ## Drive a Servo by pulse width:
     board.goToPeriod(servo, period)
 where:
 * servo => 1 to 8
-* period => 500 - 2500 
+* period => 500 to 2500 
 	period is the pulse width in microseconds
 
 This code is designed to be used as a module. See: https://kitronik.co.uk/blogs/resources/modules-micro-python-and-the-raspberry-pi-pico for more information.
