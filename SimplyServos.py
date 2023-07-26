@@ -35,10 +35,12 @@ class KitronikSimplyServos:
              
     #simply stops and starts the servo PIO, so the pin could be used for soemthing else.
     def registerServo(self,servo):
+        servo -= 1
         if(not self.servos[servo].active()):
             self.servos[servo].active(1)
 
     def deregisterServo(self, servo):
+        servo -= 1
         if(self.servos[servo].active()):
             self.servos[servo].active(0)
  
@@ -61,6 +63,7 @@ class KitronikSimplyServos:
             period = 500
         if(period > 2500):
             period = 2500
+        servo -= 1
         #check if servo SM is active, otherwise we are trying to control a thing we do not have control over
         if self.servos[servo].active():
             self.servos[servo].put(period)
@@ -92,5 +95,5 @@ class KitronikSimplyServos:
             self.servos[i].exec("mov(isr, osr)")
             # Pre set X to be half of a full pulse (90 degrees)
             self.servos[i].put(1500) # Change this between 500 to 2500 for 0 to 180 degrees initial position
-            self.registerServo(i)
+            self.registerServo(i + 1)
       
